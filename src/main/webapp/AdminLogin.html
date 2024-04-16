@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Titles Library Admin Login</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  LOCAL STYLESHEETS  -->
+    <link href="/CSS/basestyle.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+
+    <!-- call the login api -->
+    <script src="login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body style="margin-left: 20%; text-align: center; width: 30%;">
+    <main class="form-signin">
+      <form name="adminlogin" method="POST" action="adminLoginServlet">
+        <h1 class="h3 mb-3 fw-normal"><b>Titles Library</b> - Admin Login</h1>
+        <img src="Images/people.png" height="256" width="256"/>
+        <div class="form-floating">
+          <input type="text" class="form-control" name="login" placeholder="(e,g, ad5xh or AD5XJ)">
+          <label for="floatingInput">Login ID:</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" name="passwd" placeholder="(e.g. )">
+          <label for="floatingPassword">Password:</label>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Login</button>
+      </form>
+    </main>
+  </body>
+</html>

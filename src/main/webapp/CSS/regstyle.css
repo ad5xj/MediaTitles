@@ -1,0 +1,141 @@
+.container { width: 80%; height: 100%; margin: 0 auto; }
+.form-register {  max-width: 25rem; margin: auto; border-width: 0px; }
+.form-register table 
+{
+  border-width: 0px; 
+  border-collapse: collapse; 
+  font-family: 'Liberation Serif', 'DejaVu Serif', serif;
+  font-size: 1.2em;
+}
+.form-register > table > tbody { border-width: 0px; }
+.form-register > table > tr { border-width: 0px; line-height: 1.1en; margin-top: 3px; }
+.form-register > table > tr > td { border-width: 0px; }
+
+.form-signin { max-width: 25rem; margin: auto; }
+
+/***********************************************
+       Account Registrations and Login
+***********************************************/
+.box, .regbox
+{
+    width: 320px;
+    height: 420px;
+    background: #2f3542;
+    margin: 0;
+    padding: 30px;
+    top: 55%;
+    left: 50%;
+    color: #fff;
+    border-radius: 15px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+}
+
+.avatar
+{
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    height: 150px;
+    top: -22%;
+    position: absolute;
+    left: calc(50% - 75px);
+    border-radius: 50%;
+}
+
+.box h1    { margin: 0; padding: 30px; text-align: center; font-size: 1.5em; }
+.box p     { margin: 0; padding: 0; font-weight: bold; }
+.box input { width: 100%; margin-bottom: 15px; border-radius: 8px; font-size: 1.3em; height: 1.4em; }
+.box input[type="text"],
+.box input[type="password"]
+{
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    height: 1.3em;
+    color: #fff;
+}
+
+.box input[type="submit"]
+{
+    display: block;
+    border: none;
+    outline: none;
+    height: 1.3em;
+    background: #eccc68;
+    color: #000;
+    font-size: 1.3em;
+    border-radius: 20px;
+}
+
+.box input[type="submit"]:hover
+{
+    border: none;
+    outline: none;
+    height: 1.3em;
+    background: #ff6348;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+
+.box a { text-decoration: none; color: #fff; font-size: 1em; line-height: 1.2em; }
+.box a:hover { color: #eccc68; }
+
+.regbox .avatar
+{
+    margin: 0;
+    padding: 0;
+    width: 150px;
+    height: 150px;
+    top: -19%;
+    position: absolute;
+    left: calc(50% - 75px);
+    border-radius: 50%;
+}
+
+.regbox h1    { margin-top: 30px; padding: 20px 0; text-align: center; font-size: 1.5em; }
+.regbox p     { margin: 0; padding: 0; font-weight: bold; }
+.regbox a     { text-decoration: none; color: #fff; font-size: 16px; line-height: 1.3em; }
+.regbox a:hover { color: #eccc68; }
+.regbox input { width: 100%; margin-bottom: 15px; border-radius: 5px; font-size: 1.3em;}
+.regbox input[type="text"],
+.regbox input[type="password"]
+{
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    height: 1.4em;
+    color: #fff;
+    font-size: 1.3em;
+}
+
+.regbox input[type="submit"]
+{
+    display: block;
+    border: none;
+    outline: none;
+    height: 1.4em;
+    background: #eccc68;
+    color: #000;
+    font-size: 1.3em;
+    border-radius: 20px;
+}
+
+.regbox input[type="submit"]:hover
+{
+    border: none;
+    outline: none;
+    height: 1.4em;
+    background: #ff6348;
+    color: #fff;
+    font-size: 1.3em;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}

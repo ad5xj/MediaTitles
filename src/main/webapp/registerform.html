@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>User Registration/EDIT</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--  LOCAL STYLESHEETS  -->
+    <link href="/CSS/basestyle.css" rel="stylesheet">
+    <link href="/CSS/regstyle.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+  </head>
+
+  <body style="margin-left: 20%; text-align: center; width: 30%;">
+    <main class="form-register">
+      <form onsubmit="return login()">
+        <h1 class="h3 mb-3 fw-normal"><b>User Registration</b></h1>
+        <img src="Images/people.png" height="256" width="256"/>
+        <table>
+          <tbody>
+            <tr>
+              <td style="text-align: right;">Login ID:</td>
+              <td><input id="login" name="login" type="text" class="form-control" placeholder="LOGIN ID (adb5de)"></td>
+            </tr>
+            <tr>
+              <td style="text-align: right;">User Name:</td>
+              <td><input id="userName" name="username" type="text" class="form-control" placeholder="Full Name"></td>
+            </tr>
+            <tr>
+              <td style="text-align: right;">User Password:</td>
+              <td><input id="password" name="passwd" type="password" class="form-control" placeholder="Password"></td>
+            </tr>
+            <tr>
+              <td style="text-align: right;">Priv Level:</td>
+              <td>
+                <select class="form-control" id="privLvl">
+                  <option>0</option>
+                  <option disabled>1</option>
+                  <option disabled>2</option>
+                  <option disabled>5</option>
+                  <option disabled>9</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Submit</button>
+      </form>
+    </main>
+    <!-- call the login api -->
+    <script src="login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

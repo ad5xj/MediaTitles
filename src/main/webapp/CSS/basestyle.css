@@ -1,0 +1,328 @@
+/* BASE STYLES FOR THE PROJECT */
+body {
+  font-family: "Liberation Sans", "DejaVu Sans", Arial, Helvetica, sans-serif;
+  font-size: 16pt; 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%; 
+  padding-top: 5rem; 
+  background-size: cover;
+  background-color: #f5f5f5;
+}
+body, html { height: 100%; }
+html { box-sizing:border-box; } *,*:before, *:after { box-sizing:inherit; }
+html { -ms-text-size-adjust:100%; -webkit-text-size-adjust:100%; }
+body { width: 100% !important; font-size: 16pt !important; line-height: 1.2em !important; }
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section { display:block; } 
+
+/* Extra small devices (portrait phones, less than 576px)
+   No media query since this is the default in Bootstrap */
+
+@media only screen and (max-width: 600px)
+{ 
+    body { max-width: 600px; }   /* Small devices (landscape phones, 576px and up) */
+}
+
+@media (min-width: 768px) 
+{
+    body { max-width: 800px; }   /* Medium devices (tablets, 768px and up) */
+}
+
+@media (min-width: 992px) 
+{
+    body  { max-width: 1000px; }  /* Large devices (desktops, 992px and up) */
+}
+
+@media (min-width: 1200px) 
+{
+    body { max-width: 1920px; } /* Extra large devices (large desktops, 1200px and up) */
+}
+
+h1 { font-size: 2.0em; text-align: center; }
+h2 { font-size: 1.5em; font-weight: bold; }
+h3 { font-size: 1.4em; }
+h4 { font-size: 1.3em; }
+h5 { font-size: 1.2em; font-style: italic; }
+
+table { display: table; }
+tr    { display: table-row; }
+th    { display: table-cell; }
+td    { display: table-cell; }
+
+img   { border-width: 0px; }
+
+form
+{
+  display: inline-block; 
+  text-align: center; 
+  font-family: "Liberation Sans", Helvetica, Arial, sans-serif; 
+  font-size: 1.1em; 
+}
+form input { display: inline-block; font-size: 1.1em; }
+form label { font-size: 1.1em; }
+form div   { margin-top: 3px; }
+
+button  
+{
+  vertical-align: middle; 
+  margin-top: 3px;
+  padding: 1px; 
+  border-radius: 5px;
+  background: linear-gradient(#ccc, #fbfbfb);
+}
+button.label { color: blue; }
+
+btn-80  { width: 80px; box-sizing: content-box; }
+#btn-100 { width: 100px; height: 38px; font-size: 1.1em; }
+btn-120 { width: 120px; box-sizing: content-box; }
+btn-150 { width: 150px; box-sizing: content-box; }
+
+footer  { font-family: "Liberation Serif", serif; font-size: 8pt; }
+
+a { background-color:transparent }
+a:active, a:hover { outline-width:0; }
+abbr[title] { border-bottom:none; text-decoration:underline; text-decoration:underline dotted }
+b, strong { font-weight:bolder; }
+dfn       { font-style:italic;} 
+mark      { background: #FF0000; color:#000000; }
+small     { font-size: 80%; }
+sub, sup  { font-size:75%; line-height:0; position:relative; vertical-align:baseline; }
+sub       { bottom:-0.25em; }
+sup       { top:-0.5em; }
+
+figure    { margin:1em 40px; }
+
+code, kbd, pre, samp { font-family:monospace,monospace; font-size:1em; }
+
+hr { box-sizing:content-box; height:0; overflow:visible; }
+
+   /* menu styles */
+#cssmenu 
+{
+  display: block;
+  width: 100%;
+  height: 45px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #080808;
+  background: linear-gradient(#080808, #686868);     /* still need the ms filter for the older browsers */
+  -ms-background: linear-gradient(#080808, #686868);
+  -moz-background: linear-gradient(#080808, #686868);
+  -webkit-background: linear-gradient(#080808, #686868);
+  z-index: 10000;
+}
+#cssmenu,
+#cssmenu ul,
+#cssmenu li,
+#cssmenu a { border: none; line-height: 1; margin: 0; padding: 0; }
+#cssmenu > ul      { list-style: inside none; margin: 0; padding: 0; }
+#cssmenu > ul > li { float: left; list-style: inside none; position: relative; margin: 0; padding: 0; }
+#cssmenu > ul > li:first-child > a { border-radius: 5px 0 0 5px; }
+#cssmenu > ul > li > a 
+{
+  display: block;
+  position: relative;
+  outline: none;
+  padding: 12px 20px;
+  border-right: 1px solid #080808;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+  font-weight: 400;
+  font-family: 'DejaVu Sans', 'Liberation Sans', Helvetica, Arial, sans-serif;
+  color: #ffffff;
+}
+#cssmenu > ul > li > a:after 
+{
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  right: -2px;
+  content: "";
+  border-right: 1px solid;
+  border-color: #3c3c3c;
+  z-index: 199;
+}
+#cssmenu ul li > ul,
+#cssmenu ul li > div 
+{
+  display: none;
+  position: absolute;
+  top: 38px;
+  width: auto;
+  padding: 10px 6px;
+  background: #3f3f3f;
+  border-radius: 0 0 5px 5px;
+  z-index: 999;
+}
+#cssmenu ul li > ul { width: 260px; }
+#cssmenu ul ul ul   { position: absolute; }
+#cssmenu ul ul li:hover > ul { left: 100%; top: -10px; border-radius: 5px; }
+#cssmenu ul li > ul li       { display: block; list-style: inside none; position: relative; margin: 0; padding: 0; }
+#cssmenu ul li > ul li a 
+{
+  display: block;
+  outline: none;
+  position: relative;
+  font-size: 10pt;
+  font-family: 'DejaVu Sans', 'Liberation Sans', Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  text-decoration: none;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding: 8px 20px;
+}
+#cssmenu,
+#cssmenu ul ul > li:hover > a,
+#cssmenu ul ul li a:hover 
+{
+  background: #3c3c3c;
+  background: linear-gradient(#4c4c4c 0%, #222222);
+}
+#cssmenu > ul > li > a:hover { background: #080808; color: #ffffff; }
+#cssmenu ul ul a:hover { color: #ffffff; }
+#cssmenu > ul > li.has-sub > a:hover:before { border-top: 5px solid #ffffff; }
+#cssmenu.align-center > ul { text-align: center; }
+#cssmenu.align-center > ul > li { float: none; margin-left: -3px; }
+#cssmenu.align-center ul ul     { text-align: left; }
+#cssmenu.align-center > ul > li:first-child > a { border-radius: 0; }
+#cssmenu ul li.has-sub:hover > a:after { top: 0; bottom: 0; }
+#cssmenu > ul > li.has-sub > a:before  
+{
+  position: absolute;
+  top: 18px;
+  right: 6px;
+  content: "";
+  border: 5px solid transparent;
+  border-top: 5px solid #ffffff;
+}
+#cssmenu > ul > li.has-sub:hover > a:before { top: 19px; }
+#cssmenu > ul > li.has-sub:hover > a { padding-bottom: 14px; z-index: 999; border-color: #3f3f3f; }
+#cssmenu ul li.has-sub:hover > ul,
+#cssmenu ul li.has-sub:hover > div   { display: block; }
+#cssmenu > ul > li.has-sub > a:hover,
+#cssmenu > ul > li.has-sub:hover > a { background: #3f3f3f; border-color: #3f3f3f; }
+
+.bg-mynav { background-color: #2c3e50; }
+
+table,
+.table-bordered,  
+.table-striped  
+{
+  font-size: .8em; 
+  padding: 0; 
+  margin: 0; 
+  border-collapse: collapse;
+}
+.table-bordered > tbody > tr > td, 
+.table-bordered > tbody > tr > th 
+{
+  padding: 2px 1px 0 6px ! important;
+  margin: 0         ! important;
+  height: 20px      ! important;
+  line-height: 1em ! important;
+  border: 1px solid black; 
+}
+.table-bordered > tfoot > tr > td, 
+.table-bordered > tfoot > tr > th
+{
+  padding: 2px 1px 0 6px ! important;
+  margin: 0         ! important;
+  height: 20px      ! important;
+  line-height: 1em ! important;
+  border: 1px solid black; 
+}
+.table-bordered > thead > tr > td, 
+.table-bordered > thead > tr > th
+{
+	display: table-cell !important;
+  padding: 2px 1px 0 6px ! important;
+  margin: 0         ! important;
+  height: 20px      ! important;
+  line-height: 1em ! important;
+  border: 1px solid black !important; 
+}
+
+table > tr,
+.table-bordered > tbody > tr,
+.table-striped > tbody > tr
+{
+  padding: 0;
+  margin: 0;
+  height: 18px;
+  border: 1px solid black; 
+  line-height: 0.9em;
+}
+table > tr > th,
+.table-bordered > tbody > tr > th { border: 1px solid black; }
+
+table > td, 
+.table-bordered > tbody > tr > td, 
+.table-striped > tbody > tr > td
+{ 
+  padding: 0px; 
+  border: 1px solid black; 
+  font-size: 1.2em; 
+  margin-top: 2px; 
+  margin-bottom: 2px; 
+  vertical-align: middle;
+  font-family: 'DejaVu Sans', 'Liberation Sans Regular', Helvetica, sans-serif;
+  font-weight: 300;
+  line-height: 0.9em;
+}
+
+.table-striped tbody tr:nth-of-type(n) 
+{
+  line-height: 18px; 
+  background-color: #efefff ! important; 
+}
+.table-striped tbody tr:nth-of-type(2n+1) 
+{ 
+  line-height: 0.9em; 
+  background-color: #ffffff ! important; 
+}
+
+.panels { min-height: 100vh;  overflow: hidden; display: flex; }
+.panel  
+{ 
+	background: transparent; 
+	text-align: center;  
+	align-items: center;
+  transition:
+    font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+    background 0.2s;
+  font-size: 20px;
+  background-size: cover;
+  background-position: center;
+  flex: 1;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel1 { background: transparent; }
+.panel2 { background: transparent; }
+.panel3 { background: transparent; }
+.panel4 { background: transparent; }
+.panel5 { background: transparent; }
+.panel > * 
+{
+  margin: 0;
+  width: 100%;
+  transition: transform 0.5s;
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.panel > *:first-child { transform: translateY(-100%); }
+.panel.open-active > *:first-child { transform: translateY(0); }
+.panel > *:last-child  { transform: translateY(100%); }
+.panel.open-active > *:last-child  { transform: translateY(0); }
+
+.panel p { font-size: 1em; opacity: 0.3; }
+.panel p:nth-child(2) { font-size: 1.1em; }
+.panel.open { flex: 5; font-size: 40px; }
