@@ -82,7 +82,7 @@ public class DBUtil
     {
         if ( conn != null ) // test for connection previously open
         {
-        	System.out.println("DEBUG DBUtil:connect - connection is open so close it");
+        	System.out.println("DEBUG DBUtil:connect 85: connection is open so close it");
             conn.close();
             connected = false;
         }
@@ -93,7 +93,7 @@ public class DBUtil
         }
         catch ( ClassNotFoundException e )
         {
-        	System.out.println("ERROR DBUtil : connect() - driver failed " + e.getMessage());
+        	System.out.println("ERROR DBUtil 92: connect() - driver failed on class for name -- " + e.getMessage());
         	return;
         }
 
@@ -108,7 +108,7 @@ public class DBUtil
         catch ( SQLException e )
         {
             String msg;
-            msg  = "ERROR DBUtil:connect - Connection Failed! err=" + e.getMessage() + "\nConn:" + CONN_STR;
+            msg  = "ERROR DBUtil:connect 105: Connection Failed! err=" + e.getMessage() + "\nConn:" + CONN_STR;
             System.out.println(msg);
             connected = false;
             throw e;
@@ -157,15 +157,24 @@ public class DBUtil
 
         try
         {
-            //Create statement
-            stmt = conn.prepareStatement(DML);
-            rs = stmt.executeQuery();
+        	if ( conn != null ) // test for connection previously open
+        	{
+                //Create statement
+                stmt = conn.prepareStatement(DML);
+                rs = stmt.executeQuery();
+        	}
+        	else
+        	{
+        		connect();
+                stmt = conn.prepareStatement(DML);
+                rs = stmt.executeQuery();
+        	}
             return rs;
         }
-        catch ( SQLException | NullPointerException e )
+        catch ( SQLException e )
         {
             String msg;
-            msg  = "ERROR DBUtil.execQuery(): Problem occurred preparing statement: " + e.getMessage() + "\nSQL=" + dmlstr;
+            msg  = "ERROR DBUtil.execQuery() 161: Problem occurred preparing statement: " + e.getMessage() + "\nSQL=" + dmlstr;
             System.out.println(msg);
             throw e;
         }

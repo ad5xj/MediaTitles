@@ -40,8 +40,8 @@ public interface ITitle extends Dao<Title>
 
     abstract int getLastID();
     abstract void clearData();
-    abstract List<Title> retrieveAll();
-    abstract List<Title> retrieveByTitle(String i_title);
+    abstract List<TitleStr> listAll();
+    abstract List<TitleStr> retrieveByTitle(String i_title);
     abstract Title retrieveByID(int i_id );
     abstract void createTestData();
 }

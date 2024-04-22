@@ -16,6 +16,7 @@ import org.ad5xj.model.User;
 import org.ad5xj.model.Author;
 import org.ad5xj.model.MediaType;
 import org.ad5xj.model.Title;
+import org.ad5xj.model.TitleStr;
 
 import org.ad5xj.dao.UserImplDAO;
 import org.ad5xj.dao.AuthorImplDAO;
@@ -86,7 +87,7 @@ public class HomepageServlet extends HttpServlet
 		RequestDispatcher rd;
 		TitleImplDAO titleobj = new TitleImplDAO();
 
-		List < Title > listTitles = titleobj.retrieveAll();
+		List < TitleStr > listTitles = titleobj.listAll();
 		System.out.println("INFO HomepageServlet:showTtilesList() 86- Loading Titles List...");
         request.setAttribute("mytitle", listTitles);
         request.setAttribute("listTitles", listTitles);

@@ -2,12 +2,12 @@ package org.ad5xj.model;
 
 public class TitleStr
 {
-	String titleid_s = "";
-    String author_s  = "";
-    String media_s   = "";
-    String loan_s    = "";
-    String title_s   = "";
-    String note_s    = "";
+	public String titleid_s = "";
+	public String author_s  = "";
+	public String media_s   = "";
+	public String loan_s    = "";
+	public String title_s   = "";
+	public String note_s    = "";
 
     public TitleStr() { }
     

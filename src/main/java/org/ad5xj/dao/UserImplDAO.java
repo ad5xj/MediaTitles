@@ -2,6 +2,7 @@ package org.ad5xj.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,16 @@ public class UserImplDAO implements IUser
     private ResultSet rs;
     private User   user;
     private UserImplDAO userobj;
-
+    // CRUD CONSTANTS FOR SQL  //
+	private static final String INSERT_USERS_SQL     = "INSERT INTO libraryDB.Users (userid, privLvl, login, userName, userPasswd) VALUES  (";
+	private static final String SELECT_USER_BY_ID    = "SELECT userid, privLvl, login, userName, userPasswd FROM libraryDB.Users WHERE userid = ";
+	private static final String SELECT_USER_BY_LOGIN = "SELECT userid, privLvl, login, userName, userPasswd FROM libraryDB.Users WHERE login LIKE = '";
+	private static final String SELECT_ALL_USERS     = "SELECT userid, privLvl, login, userName, userPasswd FROM libraryDB.Users ORDER BY userid ASC";
+	private static final String DELETE_USERS_SQL     = "DELETE from libraryDB.Users WHERE userid ;";
+	private static final String UPDATE_USERS_SQL     = "UPDATE libraryDB.Users (userid, userLogin, userName, userPasswd) VALUES (";
+	private static final String SELECT_USERS_BY_LP   = "SELECT userid, privLvl, login, userName, userPasswd FROM libraryDB.Users WHERE " +
+	                                                   " login = '";
+    //                         //
     public void User() {};
 
     public void User(int i_id, int i_p, String i_login, String i_name, String i_passwd)
@@ -137,9 +147,9 @@ public class UserImplDAO implements IUser
         String DML = "";
         db = new DBUtil();
 
-        DML = "INSERT INTO User (userid, privLvl, login, userName, userPasswd) VALUES (" +
+        DML = INSERT_USERS_SQL + 
               Integer.toString(i_u.getID()) + "," +
-                Integer.toString(i_u.getPrivLvl()) + ",'" +
+              Integer.toString(i_u.getPrivLvl()) + ",'" +
               i_u.getLogin()  + "', '" +
               i_u.getName()   + "', '" +
               i_u.getPasswd() + "')";
@@ -152,6 +162,7 @@ public class UserImplDAO implements IUser
         {
             result = false;
         }
+
         db = null;
         return result;
     }
@@ -165,7 +176,7 @@ public class UserImplDAO implements IUser
         boolean result = false;
         String DML  = "";
         /* form DML from values in incoming object using MariaDB SQL syntax */
-        DML = "UPDATE User (userid, userLogin, userName, userPasswd) VALUES (" +
+        DML = UPDATE_USERS_SQL +
                 i_u.getID()      + ", " +
                 i_u.getPrivLvl() + ",'" +
                 i_u.getLogin()   + "', '" +
@@ -190,7 +201,7 @@ public class UserImplDAO implements IUser
     public boolean destroy(int i_id)
     {
         boolean result = false;
-        String DML  = "DELETE FROM Users WHERE userid = " + Integer.toString(i_id);
+        String DML = DELETE_USERS_SQL + " userid = " + Integer.toString(i_id);
         try
         {
             db.execQuery(DML);
@@ -264,7 +275,7 @@ public class UserImplDAO implements IUser
         rs = null;
         List <User> users = new ArrayList<>();
 
-        String DML = "SELECT userid, privLvl, login, userName, userPasswd FROM libraryDB.Users ORDER BY userid ASC";
+        String DML = SELECT_ALL_USERS;
         try
         {
             rs = db.execQuery(DML);
@@ -358,7 +369,7 @@ public class UserImplDAO implements IUser
         db = new DBUtil();
         rs = null;
 
-        String DML = "SELECT * FROM Users WHERE userid = " + Integer.toString(i_id);
+        String DML = SELECT_USER_BY_ID + Integer.toString(i_id);
         user = new User();
         try
         {
@@ -390,7 +401,7 @@ public class UserImplDAO implements IUser
         user = new User();
 
         System.out.println("getting user by login: " + i_login);
-        String DML = "SELECT * FROM Users WHERE login = '" + i_login + "'";
+        String DML = SELECT_USER_BY_LOGIN + i_login + "'";
         try
         {
             rs = db.execQuery(DML);
@@ -429,7 +440,7 @@ public class UserImplDAO implements IUser
         db = new DBUtil();
         rs = null;
 
-        String DML = "SELECT * FROM Users WHERE login = '" + i_login + "' AND userPasswd = '" + i_passwd + "'";
+        String DML = SELECT_USERS_BY_LP + i_login + "' AND userPasswd = '" + i_passwd + "'";
         try
         {
             rs = db.execQuery(DML);
@@ -465,7 +476,7 @@ public class UserImplDAO implements IUser
      */
     public void clearData()
     {
-        String DML = "DELETE FROM User WHERE userid >= 0 ";
+        String DML = DELETE_USERS_SQL + " >= 0 ";
         db = new DBUtil();
         try
         {

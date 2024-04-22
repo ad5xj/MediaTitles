@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page import="java.util.List" %>
+<%@ page import="org.ad5xj.model.TitleStr" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <html>
   <head>
     <title>Insert title here</title>
@@ -29,7 +31,7 @@
 	          </tr>
 	        </thead>
          <tbody id="mytable">
-         <c:forEach var="org.ad5xj.model.TitleStr" items="listTitles">
+         <c:forEach var="org.ad5xj.model.TitleStr" items="${listTitles}">
            <tr>
              <td><c:out value="${TitleStr.titleid_s}" /></td>
              <td><c:out value="${TitleStr.title_s}" /></td>

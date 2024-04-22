@@ -7,7 +7,6 @@
   <display-name>MediaTitles</display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>

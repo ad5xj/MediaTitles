@@ -1,8 +1,16 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
+encoding//src/main/java/org=UTF-8
+encoding//src/main/java/org/ad5xj=UTF-8
+encoding//src/main/java/org/ad5xj/Servlets=UTF-8
+encoding//src/main/java/org/ad5xj/Servlets/IndexServlet.java=UTF-8
 encoding//src/main/java/org/ad5xj/Servlets/UserServlet.java=UTF-8
+encoding//src/main/java/org/ad5xj/controllers=UTF-8
+encoding//src/main/java/org/ad5xj/controllers/UserController.java=UTF-8
+encoding//src/main/java/org/ad5xj/dao=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
 encoding//src/test/java=UTF-8
 encoding//src/test/resources=UTF-8
 encoding/<project>=UTF-8
+encoding/pom.xml=UTF-8

@@ -37,11 +37,11 @@
      <div style="width: 90%; margin-left: 25%;">
        <div class="btn-group" style="width: 10%; float: left;"> 
          <form method="GET" action="indexServlet">
-	         <button id="btnTM" name="titlesList" value="titlesList" type="submit">Search</button>
-	         <button id="btnPT" type="submit" value="PrintTitles">Print Titles</button>
-	         <button id="btnPA" type="submit" value="PrintAuthors">Print Authors</button>
-	         <button id="btnPM" type="submit" value="PrintMedia">Print Media</button>
-	         <button id="btnHelp" type="submit" value="Help">Help</button>
+           <button id="btnTM" name="titlesList" value="titlesList" type="submit">Search</button>
+           <button id="btnPT" type="submit" value="PrintTitles">Print Titles</button>
+           <button id="btnPA" type="submit" value="PrintAuthors">Print Authors</button>
+           <button id="btnPM" type="submit" value="PrintMedia">Print Media</button>
+           <button id="btnHelp" type="submit" value="Help">Help</button>
          </form>
        </div>
        <div id="bookshelf" style="width:40%; float: left;">

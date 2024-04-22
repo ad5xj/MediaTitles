@@ -21,6 +21,23 @@ public class TitleImplDAO implements ITitle
     private DBUtil db;
     private ResultSet rs;
     private Title   mytitle;
+    // CRUD CONSTANTS FOR SQL  //
+	private static final String INSERT_TITLE_SQL   = "INSERT INTO libraryDB.Title (titleid, authKey, mediaKey, loanKey, title, bookNote) VALUES (";
+	private static final String SELECT_TITLE_BY_ID = "SELECT titleid, authKey, mediaKey, loanKey, title, bookNote FROM libraryDB.Title WHERE titleid = ";
+	private static final String DELETE_TITLE_SQL   = "DELETE from libraryDB.Title WHERE titleid ;";
+	private static final String UPDATE_TITLE_SQL   = "UPDATE libraryDB.Title (titleid, authKey, mediaKey, loanKey, title, bookNote) VALUES (";
+	private static final String SELECT_ALL_BY_SCH1 = "SELECT titleid, Author.lastName || ', ' || Author.firstName as authname, " +
+			                                         "MediaType.name as media, loanKey, title, bookNote FROM libraryDB.Title ";
+	private static final String SELECT_ALL_BY_SCH2 = "WHERE libraryDB.Title.title LIKE '";
+	private static final String SELECT_ALL_BY_SCH3 = "INNER JOIN libraryDB.Author ON libraryDB.Author.authorid = libraryDB.Title.authKey " +
+			                                         "INNER JOIN libraryDB.MediaType ON libraryDB.MediaType.mediaid = libraryDB.Title.mediaKey " +
+			                                         "ORDER BY libraryDB.Title.title ASC, authname ASC, media ASC";
+	private static final String SELECT_ALL_TITLES  = "SELECT titleid, concat(Author.lastName, ', ', Author.firstName) as authname, " +
+	                                                 "MediaType.mediaName as media, loanKey, title, bookNote FROM libraryDB.Title " +
+	                                                 "INNER JOIN libraryDB.Author ON libraryDB.Author.authid = libraryDB.Title.authKey " +
+	                                                 "INNER JOIN libraryDB.MediaType ON libraryDB.MediaType.mediaid = libraryDB.Title.mediaKey " +
+	                                                 "ORDER BY libraryDB.Title.title ASC, authname ASC, media ASC";
+    //                         //
 
     public void Title() { };
 
@@ -127,7 +144,7 @@ public class TitleImplDAO implements ITitle
         String DML = "";
         db = new DBUtil();
 
-        DML = "INSERT INTO Title (titleid, authKey, mediaKey, loanKey, title, bookNote) VALUES (" +
+        DML = INSERT_TITLE_SQL +
               Integer.toString(t.getID()) + "," +
               Integer.toString(t.getAuthKey()) + "," +
               Integer.toString(t.getMediaKey())  + "', '" +
@@ -155,7 +172,7 @@ public class TitleImplDAO implements ITitle
         boolean result = false;
         String DML  = "";
         /* form DML from values in incoming object using MariaDB SQL syntax */
-        DML = "UPDATE Tilte (titleid, authKey, mediaKey, loanKey, title, bookNote) VALUES (" +
+        DML = UPDATE_TITLE_SQL +
                 Integer.toString(t.getID()) + "," +
                 Integer.toString(t.getAuthKey()) + "," +
                 Integer.toString(t.getMediaKey())  + "', '" +
@@ -181,7 +198,7 @@ public class TitleImplDAO implements ITitle
     public boolean destroy(int i_id)
     {
         boolean result = false;
-        String DML  = "DELETE FROM Title WHERE titleid = " + Integer.toString(i_id);
+        String DML  = DELETE_TITLE_SQL + Integer.toString(i_id);
         try
         {
             db.execQuery(DML);
@@ -251,67 +268,13 @@ public class TitleImplDAO implements ITitle
      *
      * @return the list of all Title records
      */
-	public List<Title> retrieveAll()
-    {
-        db = new DBUtil();
-        rs = null;
-        List <Title> titles = new ArrayList<>();
-
-        String DML = "SELECT titleid, authKey, mediaKey, loanKey, title, bookNote FROM libraryDB.Title ORDER BY title ASC";
-        try
-        {
-            rs = db.execQuery(DML);
-        }
-        catch ( SQLException e )
-        {
-        	System.out.println("ERROR TitleImplDAO:retrieveAll 271: query error - "+e.getMessage());
-        	return titles;
-        }
-
-        try
-        {
-        	System.out.println("DEBUG TitleImplDAO:retrieveAll 271: creating the list... ");
-            while ( rs.next() )
-            {
-                int i_id = rs.getInt("titleid");
-                int i_a  = rs.getInt("authKey");
-                int i_m  = rs.getInt("mediaKey");
-                int i_l  = rs.getInt("loanKey");
-                String i_title = rs.getString("title");
-                String i_note = rs.getString("bookNote");
-                Title mytitle = new Title(i_id, i_a, i_m, i_l, i_title, i_note);
-                titles.add(mytitle);
-            }
-        }
-        catch ( SQLException e)
-        {
-        	System.out.println("ERROR TitleImplDAO:retrieveAll 286: error adding records to list - "+e.getMessage());
-        }
-        db = null;
-        return titles;
-    }
-
-    /**
-     * @brief Retrieve all Title records from the Title table.
-     *
-     * @return the list of all Title records
-     */
 	public List<TitleStr> listAll()
     {
         db = new DBUtil();
         rs = null;
         List <TitleStr> titless = new ArrayList<>();
 
-        String DML = "SELECT libraryDB.Title.titleid, " +
-        	         "  concat(libraryDB.Author.lastName,', ',libraryDB.Author.firstName) as authname, " +
-        	         "  libraryDB.MediaType.mediaName as media, " +
-        	         "   libraryDB.Title.loanKey, " +
-        	         "   libraryDB.Title.title, " +
-        	         "   libraryDB.Title.bookNote " + 
-        	         "FROM libraryDB.Title " + 
-        	         "INNER JOIN libraryDB.Author    ON libraryDB.Author.authid     = libraryDB.Title.authKey " + 
-        	         "INNER JOIN libraryDB.MediaType ON libraryDB.MediaType.mediaid = libraryDB.Title.mediaKey " +
-        	         "ORDER BY libraryDB.Title.title ASC, authName ASC, media ASC";
+        String DML = SELECT_ALL_TITLES;
         try
         {
             rs = db.execQuery(DML);
@@ -333,8 +296,7 @@ public class TitleImplDAO implements ITitle
                 String i_l  = Integer.toString(rs.getInt("loanKey"));
                 String i_t  = rs.getString("title");
                 String i_n  = rs.getString("bookNote");
-                TitleStr mytitle = new TitleStr(i_id, i_a, i_m, i_l, i_t, i_n);
-                titless.add(mytitle);
+                titless.add(new TitleStr(i_id, i_a, i_m, i_l, i_t, i_n));
             }
         }
         catch ( SQLException e)
@@ -356,7 +318,7 @@ public class TitleImplDAO implements ITitle
         db = new DBUtil();
         rs = null;
 
-        String DML = "SELECT * FROM Title WHERE titleid = " + Integer.toString(i_id);
+        String DML = SELECT_TITLE_BY_ID + Integer.toString(i_id);
         mytitle = new Title();
         try
         {
@@ -383,13 +345,13 @@ public class TitleImplDAO implements ITitle
      * @param i_title the title 
      * @return LIst<Title> the Title object like the given title
      */
-    public List<Title> retrieveByTitle(String i_title)
+    public List<TitleStr> retrieveByTitle(String i_title)
     {
         db = new DBUtil();
         rs = null;
-        List<Title> titles = null;
+        List<TitleStr> titless = null;
 
-        String DML = "SELECT titleid, authKey, mediaKey, loanKey, title, bookNote FROM Title WHERE title LIKE '" + i_title + "' ";
+        String DML = SELECT_ALL_BY_SCH1 + SELECT_ALL_BY_SCH2 + i_title + "' " + SELECT_ALL_BY_SCH3;
         try
         {
             rs = db.execQuery(DML);
@@ -418,7 +380,7 @@ public class TitleImplDAO implements ITitle
             System.out.println("ERROR TitleImplDAO:retrieveByLoginPW() 383 - had an error..."+e.getMessage());
         }
         db = null;
-        return titles;
+        return titless;
     }
     
     /**
@@ -426,7 +388,7 @@ public class TitleImplDAO implements ITitle
      */
     public void clearData()
     {
-        String DML = "DELETE FROM Title WHERE titleid >= 0 ";
+        String DML = DELETE_TITLE_SQL + ">= 0";
         db = new DBUtil();
         try
         {
@@ -446,7 +408,7 @@ public class TitleImplDAO implements ITitle
     {
         db = new DBUtil();
         // clear existing books, so no primary key duplicate conflicts appear
-        String DML = "INSERT INTO Title (titleid, authKey, mediaKey, loanKey, title, bookNote) VALUES (" +
+        String DML = INSERT_TITLE_SQL +
                       Integer.toString(1) + "," + Integer.toString(1) + "," + Integer.toString(1) + "," + Integer.toString(1) + 
                       "DUMMY RECORD" + "," + "BOOK NOTE EXAMPLE)";
 
