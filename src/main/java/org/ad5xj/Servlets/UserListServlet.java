@@ -12,8 +12,8 @@ import java.io.PrintWriter;
 
 import java.util.List;
 
-import org.ad5xj.model.User;
-import org.ad5xj.dao.UserImplDAO;
+import org.ad5xj.Model.User;
+import org.ad5xj.DAO.UserImplDAO;
 
 @WebServlet("/userListServlet")
 public class UserListServlet extends HttpServlet 

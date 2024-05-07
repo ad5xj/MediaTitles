@@ -13,8 +13,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.ad5xj.dao.AuthorImplDAO;
-import org.ad5xj.model.Author;
+import org.ad5xj.DAO.AuthorImplDAO;
+import org.ad5xj.Model.Author;
 
 /**
  * @brief AuthorsServlet acts as a page controller for the application.
@@ -103,7 +103,7 @@ public class AuthorsServlet extends HttpServlet
         String i_note = request.getParameter("authNote");
       
         Author newAuthor = new Author(i_id, i_fname, i_lname, i_note);
-        authobj.add(newAuthor);
+        authobj.save(newAuthor);
         response.sendRedirect("list");
     }
 

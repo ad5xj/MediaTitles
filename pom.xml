@@ -40,30 +40,41 @@
           <version>3.3.3</version>
           <scope>compile</scope>
       </dependency>
-      <!-- Spring MVC Dependency -->
       <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-webmvc</artifactId>
-          <version>6.1.3</version>
+          <groupId>jakarta.platform</groupId>
+          <artifactId>jakarta.jakartaee-api</artifactId>
+          <version>11.0.0-M2</version>
+          <scope>provided</scope>
       </dependency>
-       <!-- Spring ORM -->
+      <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
       <dependency>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-orm</artifactId>
-          <version>6.1.6</version>
-      </dependency>
-      <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-servlet-api -->
-      <dependency>
-          <groupId>org.apache.tomcat</groupId>
-          <artifactId>tomcat-servlet-api</artifactId>
-          <version>11.0.0-M18</version>
-      </dependency>
-      <!-- https://mvnrepository.com/artifact/org.apache.tomee/jakartaee-api -->
-      <dependency>
-          <groupId>org.apache.tomee</groupId>
-          <artifactId>jakartaee-api</artifactId>
-          <version>10.0-M2</version>
+          <groupId>jakarta.servlet</groupId>
+          <artifactId>jakarta.servlet-api</artifactId>
+          <version>6.1.0-M2</version>
           <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>jakarta.servlet.jsp</groupId>
+          <artifactId>jakarta.servlet.jsp-api</artifactId>
+          <version>3.1.0</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>jakarta.servlet.jsp.jstl</groupId>
+          <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+          <version>3.0.0</version>
+          <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.el</groupId>
+        <artifactId>jakarta.el-api</artifactId>
+        <version>5.0.1</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api -->
+      <dependency>
+          <groupId>jakarta.persistence</groupId>
+          <artifactId>jakarta.persistence-api</artifactId>
+          <version>3.2.0-M2</version>
       </dependency>
       <!-- https://mvnrepository.com/artifact/org.glassfish.web/jakarta.servlet.jsp -->
       <dependency>
@@ -72,56 +83,134 @@
           <version>3.0.0</version>
           <scope>compile</scope>
       </dependency>
-      <dependency>
-          <groupId>org.glassfish.web</groupId>
-          <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-          <version>3.0.1</version>
-          <scope>compile</scope>
-      </dependency>
-      <dependency>
-        <groupId>jakarta.platform</groupId>
-        <artifactId>jakarta.jakartaee-api</artifactId>
-        <version>9.1.0</version>
-        <scope>compile</scope>
-      </dependency>
-      <dependency>
-        <groupId>jakarta.servlet</groupId>
-        <artifactId>jakarta.servlet-api</artifactId>
-        <version>6.0.0</version>
-        <scope>compile</scope>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/jakarta.servlet.jsp/jakarta.servlet.jsp-api -->
+    <!-- Spring -->
     <dependency>
-        <groupId>jakarta.servlet.jsp</groupId>
-        <artifactId>jakarta.servlet.jsp-api</artifactId>
-        <version>4.0.0-M2</version>
-        <scope>compile</scope>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>6.1.6</version>
+      <exclusions>
+        <!-- Exclude Commons Logging in favor of SLF4j -->
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+         </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
-        <groupId>jakarta.servlet.jsp.jstl</groupId>
-        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-        <version>3.0.0</version>
-        <scope>compile</scope>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>6.1.6</version>
     </dependency>
+    
     <dependency>
-        <groupId>jakarta.el</groupId>
-        <artifactId>jakarta.el-api</artifactId>
-        <version>5.0.0</version>
-        <scope>compile</scope>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>3.2.5</version>
     </dependency>
-    <dependency>
-        <groupId>jakarta.websocket</groupId>
-        <artifactId>jakarta.websocket-api</artifactId>
-        <version>2.1.0</version>
-        <scope>compile</scope>
-    </dependency>
-    <dependency>
-        <groupId>jakarta.security.enterprise</groupId>
-        <artifactId>jakarta.security.enterprise-api</artifactId>
-        <version>3.0.0</version>
-        <scope>compile</scope>
-    </dependency>
-  </dependencies>
+     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web-services</artifactId>
+      <version>3.2.5</version>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
+      <version>3.2.5</version>
+     </dependency>
+     <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-web</artifactId>
+        <version>6.2.3</version>
+     </dependency>
+     <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-config</artifactId>
+        <version>6.2.4</version>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <version>3.2.5</version>
+      <scope>test</scope>
+     </dependency>
+     <dependency>
+      <groupId>io.projectreactor</groupId>
+      <artifactId>reactor-test</artifactId>
+      <version>3.6.5</version>
+      <scope>test</scope>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <version>3.2.5</version>
+      <scope>runtime</scope>
+      <optional>true</optional>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+      <version>3.2.5</version>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jdbc</artifactId>
+      <version>3.2.5</version>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+      <version>3.2.5</version>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jdbc</artifactId>
+      <version>3.2.5</version>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.modulith</groupId>
+      <artifactId>spring-modulith-starter-core</artifactId>
+      <version>1.1.4</version>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.modulith</groupId>
+      <artifactId>spring-modulith-starter-jdbc</artifactId>
+      <version>1.1.4</version>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.modulith</groupId>
+      <artifactId>spring-modulith-starter-jpa</artifactId>
+      <version>1.1.4</version>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.modulith</groupId>
+      <artifactId>spring-modulith-actuator</artifactId>
+      <version>1.1.4</version>
+      <scope>runtime</scope>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.modulith</groupId>
+      <artifactId>spring-modulith-observability</artifactId>
+      <version>1.1.4</version>
+      <scope>runtime</scope>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <version>3.2.5</version>
+      <optional>true</optional>
+     </dependency>
+     <dependency>
+      <groupId>org.springframework.modulith</groupId>
+      <artifactId>spring-modulith-starter-test</artifactId>
+      <version>1.1.4</version>
+      <scope>test</scope>
+     </dependency>
+     <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+      <version>3.2.5</version>
+     </dependency>
+   </dependencies>
 
   <build>
     <finalName>MediaTitles</finalName>
@@ -139,4 +228,7 @@
       </plugin>
     </plugins>
   </build>
+  <organization>
+  	<name>org.ad5xj</name>
+  </organization>
 </project>

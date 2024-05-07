@@ -12,8 +12,8 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.ad5xj.model.User;
-import org.ad5xj.dao.UserImplDAO;
+import org.ad5xj.Model.User;
+import org.ad5xj.DAO.UserImplDAO;
 
 @WebServlet("/userLoginServlet")
 public class UserLoginServlet extends HttpServlet

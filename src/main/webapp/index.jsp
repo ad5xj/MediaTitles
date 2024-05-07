@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
  <head>
    <meta charset="UTF-8">
@@ -15,6 +16,16 @@
    <link rel="stylesheet" href="CSS/homepage.css">
    <!-- Page specific styles -->
    <style>
+     body { width: 97% !important; }
+     footer 
+     { 
+       width: 90%; 
+       text-align: center; 
+       position: absolute;
+       bottom: 0;
+       left: -28%;
+     }
+     #base_container { width: 90^%; }
      .btn-group form   { width: 95%; }
      .btn-group button { width: 95%; }
      .btn-group form button { width: 95%; }
@@ -22,14 +33,7 @@
 
    <!-- JQuery and other local scripts -->
 
-   <!-- INJECTION CODE FOR OTHER HTML -->
-   <script>
-      $(document).ready(function()
-      {
-        $('#myfooter').load('myfooter.html');
-      });
-   </script>  
- </head>
+ <head>
 
  <body>
   <div id="base_container">
@@ -47,15 +51,17 @@
        <div id="bookshelf" style="width:40%; float: left;">
          <img src="Images/Bookshelf.png" style="width: 100%;" alt="MyBooks"/>
        </div>
-        </div>
+
        <div class="btn-group" style="width: 10%; float: left;">
          <form method="GET" action="indexServlet">
           <button id="btnUsrLogin"    name="usr-login"    value="btn-usrlogin" type="submit">Login</button>
           <button id="btnUsrRegister" name="usr-register" value="btn-usrreg"   type="submit">Register</button>
           <button id="btnExit" name="btnExit" type="submit" value="btnExit">Exit</button>
          </form>
-         </div>
-     <div id="myfooter"></div>
+       </div>
    </div>
+   <footer>
+     <%@include file="myfooter.html" %>
+   </footer>
  </body>
 </html>

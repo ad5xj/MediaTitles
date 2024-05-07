@@ -12,8 +12,8 @@ import java.sql.SQLException;
 
 import java.util.List;
 
-import org.ad5xj.model.User;
-import org.ad5xj.dao.UserImplDAO;
+import org.ad5xj.Model.User;
+import org.ad5xj.DAO.UserImplDAO;
 
 /**
  * @brief ControllerServlet.java
@@ -103,7 +103,7 @@ public class UserServlet extends HttpServlet
         String userName    = request.getParameter("userName");
         String userPasswd  = request.getParameter("userPassword");
         User user = new User(userID, userPrivLvl, userLogin, userName, userPasswd );
-        userobj.add(user);
+        userobj.save(user);
         response.sendRedirect("list");
     }
 

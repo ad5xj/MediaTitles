@@ -12,16 +12,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.ad5xj.model.User;
-import org.ad5xj.model.Author;
-import org.ad5xj.model.MediaType;
-import org.ad5xj.model.Title;
-import org.ad5xj.model.TitleStr;
+import org.ad5xj.Model.UserStr;
+import org.ad5xj.Model.Author;
+import org.ad5xj.Model.MediaType;
+import org.ad5xj.Model.Title;
+import org.ad5xj.Model.TitleStr;
 
-import org.ad5xj.dao.UserImplDAO;
-import org.ad5xj.dao.AuthorImplDAO;
-import org.ad5xj.dao.MediaImplDAO;
-import org.ad5xj.dao.TitleImplDAO;
+import org.ad5xj.DAO.UserImplDAO;
+import org.ad5xj.DAO.AuthorImplDAO;
+import org.ad5xj.DAO.MediaImplDAO;
+import org.ad5xj.DAO.TitleImplDAO;
 
 
 @WebServlet("/HomepageServlet")
@@ -33,8 +33,10 @@ public class HomepageServlet extends HttpServlet
 
 	AuthorImplDAO authobj = null;
 	TitleImplDAO  titleobj = null;
+	UserImplDAO   userobj = null;
 	List<Author>  authlist = new ArrayList<>();
 	List<Title>   listTitles = new ArrayList<>();
+	List<UserStr> listUsers = new ArrayList<>();
 
     public HomepageServlet() { super(); }
 
@@ -110,13 +112,14 @@ public class HomepageServlet extends HttpServlet
 	{
 		RequestDispatcher rd;
 		UserImplDAO userobj = new UserImplDAO();
-		User user = new User();
+		UserStr user = new UserStr();
+		List<UserStr> listUsers = null;
 
-		List < User > listUser = userobj.retrieveAll();
-		System.out.println("DEBUG HomepageServlet.showUserList() 81: forwarding list of "+Integer.toString(listUser.size())+" to list-users.jsp");
+		listUsers = userobj.listAll();
+		System.out.println("DEBUG HomepageServlet.showUserList() 119: forwarding list of "+Integer.toString(listUsers.size())+" to list-users.jsp");
 		response.setContentType("text/html; charset=UTF-8");
         request.setAttribute("user", user);
-        request.setAttribute("listUser", listUser);
+        request.setAttribute("listUser", listUsers);
         try
         {
 		    rd = request.getRequestDispatcher("list-users.jsp");

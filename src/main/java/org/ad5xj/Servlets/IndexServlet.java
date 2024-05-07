@@ -12,8 +12,8 @@ import java.io.PrintWriter;
 
 import java.util.List;
 
-import org.ad5xj.model.TitleStr;
-import org.ad5xj.dao.TitleImplDAO;
+import org.ad5xj.Model.TitleStr;
+import org.ad5xj.DAO.TitleImplDAO;
 
 @WebServlet("/IndexServlet")
 public class IndexServlet extends HttpServlet 
@@ -69,6 +69,7 @@ public class IndexServlet extends HttpServlet
 	{
 		RequestDispatcher rd = null;
 		System.out.println("INFO IndexServlet:showTtilesList() 75- Loading Titles List...");
+		TitleStr title = new TitleStr();
 		TitleImplDAO titleobj = new TitleImplDAO();
 		List<TitleStr> listTitles = null;
 
@@ -77,17 +78,22 @@ public class IndexServlet extends HttpServlet
         try
         {
     		response.setContentType("text/html; charset=UTF-8");
-    		System.out.println("DEBUG IndexServlet:showTitlesList() 84 forwarding to list-titles.jsp ..");
+    		System.out.println("DEBUG IndexServlet:showTitlesList() 82 forwarding to list-titles.jsp ..");
             request.setCharacterEncoding("UTF-8");
+            request.setAttribute ("title",title);
             request.setAttribute("listTitles", listTitles);
             rd = request.getRequestDispatcher("list-titles.jsp");
             rd.forward(request, response);
+            // find the id in the tags of list-titles
+            // forward the HTML for the table
         }
-        catch ( ServletException | IOException e )
+        catch ( IOException e )
         {
-    		System.out.println("ERROR IndexServlet:showTitlesList() 91 error forwarding to list-titles.jsp .."+e.getStackTrace());
+    		System.out.println("ERROR IndexServlet:showTitlesList() 86 error forwarding to list-titles.jsp .."+e.getMessage());
+    		e.printStackTrace();
     		request.setAttribute("exception", e);
             rd = request.getRequestDispatcher("ERROR.jsp");
+            rd.forward(request,response);
         }
     }
 
